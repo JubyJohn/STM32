@@ -47,3 +47,6 @@ You can program the STM32F411VE Discovery board using popular IDEs like:
 - Industrial control systems
 - Audio processing
 
+## UART CONFIGURATION
+
+
