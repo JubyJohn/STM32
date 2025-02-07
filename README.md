@@ -1,7 +1,7 @@
 # STM32
 TO FAMILIARIZE WITH STM32
 
-- The **STM32F411VE** is a microcontroller from the STM32 family by STMicroelectronics, based on the ARM Cortex-M4 core. 
+-> The **STM32F411VE** is a microcontroller from the STM32 family by STMicroelectronics, based on the ARM Cortex-M4 core. 
 - The **STM32F411VE Discovery Kit** is a development board that allows you to explore and evaluate the capabilities of the STM32F411VE microcontroller.
 
 ### Key Features of STM32F411VE:
