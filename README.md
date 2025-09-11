@@ -51,3 +51,14 @@ You can program the STM32F411VE Discovery board using popular IDEs like:
 TWO METHODS:
 - PROGRAMMING USING REGISTERS
 - NORMMAL PROGRAMMING
+
+## DSP
+* EXPORT PROECT FILE
+* CREATED NEW FILE
+* ADD UART.h & signal.h to Inc , ADD UART.c & signal.c to Src
+* Properties->C/C++ Build - Settings -> MCU/MPU GCC Linker - Libraries -> add library & its path from CMSIS-LIB-GCC 
+* Properties->C/C++ General - Path and symbols -> ADD ARM_MATH_CM4 & _FPU_PRESENT
+* Properties->C/C++ Build - Settings -> MCU/MPU Settings -> enable (tick mark) float with printf & scanf but still error shows then command the printf prgm and call the user defined fn:
+* To debug : Run->Debud Configuration->Debugger - Serial Wire Viewer(SWV) -> 2 tick marks & max. SWO clock(kH?z) -2000
+* Window -> show view -> SWV -> SWV Data Trace Timeline Graph -> start trace -> configuration - add variable name -> resume :: graph shows
+* 
