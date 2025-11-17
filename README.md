@@ -145,4 +145,213 @@ Right.
 
 So that's all there is for the short overview on ADCs and we shall see how the work programmatically.
 
-I'll see you in the next lesson.
+I'll see you in the next lesson.'
+
+
+
+
+Hello, welcome back.
+
+In this lesson, we are going to look at ADC independent modes.
+
+The reason we have this title, ADC Independent Mode's, is because there are other modes that are not
+
+listed here.
+
+The five modes listed here are known as independent modes.
+
+There is another category of modes known as the dual mode mode or the dual mode, I should say.
+
+And that involves having two ADC modules.
+
+As you know, or as you may know, the the STM32F4 microcontroller has a single ADC module.
+
+Other STM32 versions such as the STM32F7 has two ADC modules.
+
+The two modules allows us to have the dual mode configurations, but over here because we have a single
+
+ADC module, we are only we are a we are only able to use the ADC independent modes.
+
+And I should also point out that although we have a single ADC module, it doesn't mean we have a single
+
+channel.
+
+Module is different from channels, our single ADC module allows us to have 16 channels, meaning we
+
+can connect 16 sensors to our microcontroller and sample them.
+
+Right.
+
+And we should talk more about that.
+
+So let's take a look at these modes.
+
+We have five modes listed here.
+
+The first one is the single channel, single conversion mode.
+
+The second one is the multi-channel single conversion mode.
+
+The third one, as we can see over here, is the single channel continuous conversion mode.
+
+Following that, we have the multi-channel continuous conversion mode and finally we have the injected
+
+continuous conversion mode.
+
+Now let's examine each of them one by one.
+
+So the single channel, single conversion mode is the simplest ADC mode.
+
+In this mode, the ADC performs a single conversion of a single channel and then stops after it is complete,
+
+as you can see the flow diagram here, we first start and then we convert our single channel.
+
+And then once we've once we've converted that once we've sampled the sensor or whatever analog value
+
+it is, we stop.
+
+And an example use case here is the measurement of a voltage level to determine if a system should be
+
+started or not.
+
+So imagine you have a system where the voltage has to cross a particular threshold before you start
+
+it or not, and you just need to check it out once.
+
+In that case, you use this single channel single conversion mode.
+
+Let's see the next one.
+
+The next one is the multi-channel single conversion mode, this mode is used to convert multiple channels
+
+successively and like I mentioned earlier, up to 16 different channels with different with different
+
+sampling times can be converted on the STM32F4.
+
+And the reason we see different sampling time here is because the microcontroller allows us to configure
+
+the sampling time such that you can say convert channel one at a sampling time of three processor cycles
+
+and convert channel five, for instance, to sampling time of four hundred and eighty cycles.
+
+So we have the we have the flexibility to select sampling time and sometimes setting certain transducers
+
+require longer sampling time for you to accurately get a get a data you want.
+
+That is why we are given the flexibility to be able to configure our sampling time.
+
+And in multi-channel single conversion mode, we can have multiple channels sampled successively and
+
+in our multiple channels, each of them can have their own sampling time as well.
+
+And a use case here is the measurement of multiple sensors to determine whether a system should start
+
+or not.
+
+And that's what we show in this flow diagram.
+
+Here we start and then we sample Channel X all the way to the last channel channel end and then we stop.
+
+So it's single conversion once with sample all, and so we stop, right, let's see the next one.
+
+The next one is the single channel continuous conversion mode.
+
+And as the flow diagram here depicts, we convert a single channel continuously.
+
+As you can see, once we are done converting it, we go back and convert it again.
+
+And this works in the background without the intervention of the CPU.
+
+And an excellent example of this is the measurement of the room temperature to continuously adjust the
+
+air conditioner.
+
+In the room, right, so the based on the temperature of the room, the air conditioner which cools
+
+the room will be adjusted appropriately.
+
+And in such a use case, you would want to use simple what you you would want to use single channel,
+
+continuous conversion mode.
+
+Next, we have the multichannel continuous conversion mode, and this one is used to convert multiple
+
+channels continuously, up to 16 different channels with different sampling times can be converted on
+
+our system, STM32F4 board.
+
+And as you can see, it's just like the multi-channel single conversion mode.
+
+The only difference is that this time it's continuous, once you've converted all the channels, you
+
+start from the beginning again on and on a use case.
+
+Here is the continuous measurement of multiple accelerometers to adjust the robotic arm.
+
+Imagine you have a robotic arm that has like five joints and you want to always know the position of
+
+each joint before you adjust it.
+
+And you want to be doing that rapidly, you want to be doing that like every second at 1Hz
+
+rate, which is every second, then in such a case you would want to use multi-channel continuous conversion
+
+mode.
+
+And the final one, this one is known as the injected conversion mode.
+
+This is intended for use when conversion is triggered by an external event or by software.
+
+The injected group has priority over the regular channel group.
+
+So what we are seeing here is that you could configure a set of channels to be regular group using let's say
+
+multiple conversion mode, and then you would configure another specialized channel as injected conversion
+
+mode.
+
+And that is not part of our regular group.
+
+And the injected the injected convention mode channel has priority over the other types of mood.
+
+So if we have other channels configured in a single conversion mode or multiple conversion mode.
+
+The injected conversion mode channel would have priority over those, so if there's ever a case where
+
+the process or has to decide which one to deal with first, the injector conversion mode will be dealt
+
+with.
+
+So interrupt the injection.
+
+The injector conversion mode interrupts the conversion of the current channel in the regular channel
+
+group.
+
+Right.
+
+And this diagram here depicts such a case.
+
+So a use case for this is for synchronizing the conversion of channels to an event, so if you want
+
+the ADC channel to happen to happen
+
+at a particular synchronized time, if you can synchronize it to an event such as time, right.
+
+So if you wanted to happen at an exact time, you would want to use injected conversion mode if you
+
+wanted to happen after a particular event, which is also different from time, you may want to use
+
+the injector conversion mode.
+
+But I often don't see people use this mode as often as the others.
+
+Right.
+
+But it's good to know about this as well.
+
+You may have a project that requires this type of precision, right?
+
+So this or the rest for this lesson.
+
+And I'll see you in the next lesson.
