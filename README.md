@@ -350,6 +350,19 @@ Right.
 
 But it's good to know about this as well.
 
+####TIMERS
+| Timer   | Bus  | Max Timer Clock | Counter Width |
+| ------- | ---- | --------------- | ------------- |
+| TIM1    | APB2 | 100 MHz         | 16-bit        |
+| TIM2    | APB1 | 50 MHz          | 32-bit        |
+| TIM3    | APB1 | 50 MHz          | 16-bit        |
+| TIM4    | APB1 | 50 MHz          | 16-bit        |
+| TIM5    | APB1 | 50 MHz          | 32-bit        |
+| TIM6    | APB1 | 50 MHz          | 16-bit        |
+| TIM7    | APB1 | 50 MHz          | 16-bit        |
+| SysTick | CPU  | 100 MHz         | 24-bit        |
+
+
 You may have a project that requires this type of precision, right?
 
 So this or the rest for this lesson.
