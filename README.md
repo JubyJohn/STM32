@@ -363,8 +363,3 @@ But it's good to know about this as well.
 | SysTick | CPU  | 100 MHz         | 24-bit        |
 
 
-You may have a project that requires this type of precision, right?
-
-So this or the rest for this lesson.
-
-And I'll see you in the next lesson.
