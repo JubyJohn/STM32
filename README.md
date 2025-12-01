@@ -64,29 +64,12 @@ TWO METHODS:
 * 
 
 
-##ADC
+## ADC
 
 * used for data acquisition.
 
-Digital computers use binary or discrete values, but in the physical world, everything is analog or
-
-continuous temperature, pressure, humidity, velocity, are just a few examples of physical quantities
-
-that we deal with every day.
-
-A physical quantity is converted to electrical signals using a device called transducer, and the transducer
-
-simply converts a physical quantity to either voltage or current .Transducers.
-
-use to generate electrical output are referred to us sensors, sensors for temperatures, velocity,
-
-pressure, light and many other natural physical quantities produce an output that is voltage or sometimes
-
-current.
-
-Therefore, we need an analog to digital converter to translate the analog signals to digital numbers
-
-so that the microcontroller can read and process these numbers.
+* physical quantity ----------TRANSDUCERS---------->  electrical signals
+s.
 
 Now let's talk about the concept of ADC resolution. An ADC has in bits resolution where and can be
 
