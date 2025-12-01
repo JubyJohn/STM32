@@ -65,11 +65,8 @@ TWO METHODS:
 
 
 ##ADC
-Welcome back.
 
-In this lesson, we shall give an overview of what an ADC or an analog to digital converter is.
-
-Analog to digital converters are among the most widely used devices for data acquisition.
+* used for data acquisition.
 
 Digital computers use binary or discrete values, but in the physical world, everything is analog or
 
@@ -94,6 +91,15 @@ so that the microcontroller can read and process these numbers.
 Now let's talk about the concept of ADC resolution. An ADC has in bits resolution where and can be
 
 eight, 10, 12, 16 or even 24.
+
+| n Bit   | No: of steps | Step Size | 
+| ------- | ------------ | --------- | 
+| 8-bit   | 2^8 => 256 | 5V/256 => 19.53mV        | 
+| 10-bit   | 2^10 =>  1024| 1024/5 => 4.88mV        | 
+| 12-bit   | 2^12 => 4096 | 5/4096 => 1.2mV        | 
+| 16-bit   | 2^16 => 65,536 | 5/65,536 => 0.076mV        | 
+
+
 
 So we hear so you hear of people saying this ADC is 10 bit is 12, is 16 bit. Higher resolution ADC
 
