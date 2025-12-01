@@ -1,5 +1,5 @@
 # STM32F4 
-TO FAMILIARIZE WITH STM32
+TO FAMILIARIZE WITH STM32F411VE - DISCOVERY BOARD
 
 -> The **STM32F411VE** is a microcontroller from the STM32 family by STMicroelectronics, based on the ARM Cortex-M4 core. 
 <br>-> The **STM32F411VE Discovery Kit** is a development board that allows you to explore and evaluate the capabilities of the STM32F411VE microcontroller.
