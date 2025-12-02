@@ -84,9 +84,7 @@ eight, 10, 12, 16 or even 24.
 
 
 
-So we hear so you hear of people saying this ADC is 10 bit is 12, is 16 bit. Higher resolution ADC
-
-provide a smaller step size where step size is the smallest change that can be detected by an ADC.
+Higher resolution ADC provide a smaller step size where step size is the smallest change that can be detected by an ADC.
 
 This table over here shows the number of steps as well as the step size, given the number of bits the
 
