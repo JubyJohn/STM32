@@ -69,7 +69,7 @@ TWO METHODS:
 * used for data acquisition.
 
 * physical quantity ----------TRANSDUCERS---------->  electrical signals
-s.
+
 
 Now let's talk about the concept of ADC resolution. An ADC has in bits resolution where and can be
 
@@ -100,21 +100,7 @@ We simply do two to the power eight and we get 256.
 
 And to compute the step size we've got to take the reference voltage into account.
 
-So assuming the reference voltage is 5V, which we simply do five divided by 256 and this gives us
-
-19 and this gives us 19.53mV. A 10-bits ADC has a 1024
-
-step size and the smallest change this 10 bit ADC can detect is 4.88mV,
-
-in the same way at twelve bits
-
-ADC has four thousand and ninety six number of steps and a smallest change this ADC can detect is a
-
-change in 1.2mV.
-
-A sixteen bits ADC would have sixty five thousand five hundred and thirty six steps and the smallest
-
-change this ADC will be able to detect will be 0.076mV.
+So assuming the reference voltage is 5V
 
 Vref is an input voltage use for the reference voltage, the voltage connected to this pin
 
