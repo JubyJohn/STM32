@@ -62,8 +62,8 @@ void GPIO_Init(void)
 	// ENABLE DATABUS FOR BOTH PORT B & C -> REFERENCE MANUAL 6.3.9 
 	RCC->AHB1ENR |= (1<<1) | (1<<2); //RCC -> AHB1ENR |= 0x06;
 
-  // PB5,PB6,PB7 as output (RS,RW,EN) ->  REFERENCE MANUAL 8.4.1
-	GPIOB->MODER |= 0x4400; //GPIOB-> MODER |=0x5400;  
+  // PB5,PB7 as output (RS,EN) ->  REFERENCE MANUAL 8.4.1
+	GPIOB->MODER |= 0x4400;  
 
 	//SET EN & RW LOW USING REFERNCE MANUAL 8.4.7
 	GPIOB ->BSRR =0x800000;//CLEAR EN
@@ -136,8 +136,8 @@ void delayMs(int delay)              //Function for making delay
 
 
 //PC0 - PC7 : Data line
-//PB5 RS
-//PB7 EN
+//PB5 - RS
+//PB7 - EN
 //PB6 - RW
 
 
@@ -193,8 +193,8 @@ void GPIO_Init(void)
 {
 	// ENABLE DATABUS FOR BOTH PORT B & C -> REFERENCE MANUAL 6.3.9 
 	RCC -> AHB1ENR |= 0x06; //RCC->AHB1ENR |= (1<<1) | (1<<2);
-
-	GPIOB->MODER |= 0x5400;       // PB5,PB6,PB7 as output (RS,RW,EN)
+    // PB5,PB6,PB7 as output (RS,RW,EN)
+	GPIOB->MODER |= 0x5400;    
 
 	//SET EN & RW LOW USING REFERNCE MANUAL 8.4.7
 	GPIOB ->BSRR =0x00C;//CLEAAR EN
