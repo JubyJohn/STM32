@@ -1,0 +1,245 @@
+/*********** 4  bit data mode ******************/
+
+//PC4 - PC7 : Data line
+//PB5 - RS
+//PB7 - EN
+//GND - RW
+
+
+#include "stm32f4xx.h"
+
+#define RS 0x20 //0010 0000
+#define RW 0x40 //0100 0000
+#define EN 0x80 //1000 0000
+
+void GPIO_Init(void);
+void delayMs(int);
+void LCD_Init(void);
+void LCD_data(char);
+void LCD_nibble_write(char data, unsigned char control);
+void LCD_Command(unsigned char command);
+
+int main(void){
+	LCD_Init();
+	while(1){
+		LCD_data('H');
+		LCD_data('E');
+		LCD_data('L');
+		LCD_data('L');
+		LCD_data('O');
+		delayMs(500);
+		LCD_Command(0x01);
+		delayMs(500);
+	}
+}
+
+void LCD_Init(void)
+{
+	GPIO_Init();
+	//Init sequence
+	delayMs(30);
+	LCD_nibble_write(0x30,0);// UPPER 4 BITS
+	delayMs(5);
+	LCD_nibble_write(0x30,0);
+	delayMs(1);
+	LCD_nibble_write(0x30,0);// UPPER 4 BITS
+	delayMs(1);
+
+	LCD_nibble_write(0x20,0);//4 bit mode
+    delayMs(1);
+
+
+    LCD_Command(0x28); // SET 8 BIT DATA MODE 2LINE ALPHA
+    LCD_Command(0x06); // MOVE CURSOR RIGHT
+    LCD_Command(0x01); // CLAER SCREEN,MOVESHOE E
+    LCD_Command(0x0F); // (TURN NO DISPLAY ,BLING ERROR)
+}
+
+
+
+void GPIO_Init(void)
+{
+	// ENABLE DATABUS FOR BOTH PORT B & C -> REFERENCE MANUAL 6.3.9 
+	RCC->AHB1ENR |= (1<<1) | (1<<2); //RCC -> AHB1ENR |= 0x06;
+
+  // PB5,PB6,PB7 as output (RS,RW,EN) ->  REFERENCE MANUAL 8.4.1
+	GPIOB->MODER |= 0x4400; //GPIOB-> MODER |=0x5400;  
+
+	//SET EN & RW LOW USING REFERNCE MANUAL 8.4.7
+	GPIOB ->BSRR =0x800000;//CLEAR EN
+
+	//SET PC4->PC7 AS OUTPUT
+	GPIOC -> MODER |= 0x0000550;//0x5500 = 0101 0101 0000 0000 (binary)
+
+}
+
+void LCD_nibble_write(char data, unsigned char control)
+{
+	GPIOC ->BSRR =0x00F00000; //CLEAR DATA BITS
+	GPIOC ->BSRR =data & 0xF0;
+
+	if(control & RS)
+	{
+		GPIOB ->BSRR = RS;
+
+	}
+	else
+	{
+		GPIOB ->BSRR = RS<<16;
+	}
+	// PULSE EN
+	GPIOB ->BSRR = EN;
+	delayMs(0);
+	GPIOB ->BSRR = EN<<16;
+}
+
+
+void LCD_Command(unsigned char command)
+{
+	LCD_nibble_write(command & 0xF0,0);// UPPER 4 BITS
+	LCD_nibble_write(command<<4,0);
+
+	if(command <4)
+	{
+		delayMs(2);
+	}
+	else
+	{
+		delayMs(1);
+	}
+}
+
+
+void LCD_data(char data)
+{
+	LCD_nibble_write(data & 0xF0,RS);// UPPER 4 BITS
+    LCD_nibble_write(data <<4,RS);
+	delayMs(1);
+
+}
+
+void delayMs(int delay)              //Function for making delay
+
+{
+    int i;
+
+    for(;delay>0;delay--)
+    {
+    	for(i=0;i<=3195;i++)
+    	{
+
+    	}
+    }
+
+}
+/********************* 8 BIT DATA MODE *****************************/
+
+
+//PC0 - PC7 : Data line
+//PB5 RS
+//PB7 EN
+//PB6 - RW
+
+
+#include "stm32f4xx.h"
+
+#define RS 0x20 //0010 0000
+#define RW 0x40 //0100 0000
+#define EN 0x80 //1000 0000
+
+void GPIO_Init(void);
+void delayMs(int);
+void LCD_Init(void);
+void LCD_data(char);
+void LCD_Command(unsigned char command);
+
+int main(void){
+	LCD_Init();
+	while(1){
+		LCD_data('H');
+		LCD_data('E');
+		LCD_data('L');
+		LCD_data('L');
+		LCD_data('O');
+
+		LCD_Command(1);// UPPER 4 BITS
+
+		delayMs(500);
+
+
+	}
+}
+
+void LCD_Init(void)
+{
+	GPIO_Init();
+	//Init sequence
+	delayMs(30);
+	LCD_Command(0x30);// UPPER 4 BITS
+	delayMs(10);
+	LCD_Command(0x30);
+	delayMs(1);
+	LCD_Command(0x30);// UPPER 4 BITS
+
+    LCD_Command(0x38);// SET 8 BIT DATA MODE 2LINE ALPHA
+    LCD_Command(0x06);//MOVE CURSOR RIGHT
+    LCD_Command(0x01);// CLAER SCREEN,MOVESHOE E
+    LCD_Command(0x0F);//(TURN NO DISPLAY ,BLING ERROR)
+}
+
+
+
+void GPIO_Init(void)
+{
+	// ENABLE DATABUS FOR BOTH PORT B & C -> REFERENCE MANUAL 6.3.9 
+	RCC -> AHB1ENR |= 0x06; //RCC->AHB1ENR |= (1<<1) | (1<<2);
+
+	GPIOB->MODER |= 0x5400;       // PB5,PB6,PB7 as output (RS,RW,EN)
+
+	//SET EN & RW LOW USING REFERNCE MANUAL 8.4.7
+	GPIOB ->BSRR =0x00C;//CLEAAR EN
+
+	//SET PC0->PC7 AS OUTPUT
+	GPIOC -> MODER |= 0x00005555;//0x5555 = 0101 0101 0101 0101 (binary)
+
+}
+
+
+void LCD_Command(unsigned char command)
+{
+	GPIOB ->BSRR =(RS|RW)<<16;
+	GPIOC ->ODR =command;
+	GPIOB ->BSRR =EN;
+	delayMs(0);
+	GPIOB ->BSRR =EN<<16;
+}
+
+
+void LCD_data(char data)
+{
+	    GPIOB ->BSRR =RS;
+	    GPIOB ->BSRR =RW<<16;
+		GPIOC ->ODR =data;
+		GPIOB ->BSRR =EN;
+		delayMs(0);
+		GPIOB ->BSRR =EN<<16;
+
+}
+
+void delayMs(int delay)              //Function for making delay
+
+{
+    int i;
+
+    for(;delay>0;delay--)
+    {
+    	for(i=0;i<=3195;i++)
+    	{
+
+    	}
+    }
+
+}
+
+
+
