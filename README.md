@@ -56,6 +56,12 @@ TWO METHODS:
 - USING REGISTERS - BARE METAL CODING
 <br> Here, wipe out main.c file and write program directly
 
+## LCD 16x2
+
+<img width="476" height="639" alt="Screenshot 2025-12-03 122213" src="https://github.com/user-attachments/assets/80c32153-d2fc-4cf1-8cf0-6f23a7a03494" />
+
+- contrast control pin connected to middle pin of potentiometer
+
 
 ## DSP
 * EXPORT PROECT FILE
