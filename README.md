@@ -47,10 +47,15 @@ You can program the STM32F411VE Discovery board using popular IDEs like:
 - Industrial control systems
 - Audio processing
 
-## UART CONFIGURATION
+### PROGRAMMING
 TWO METHODS:
-- PROGRAMMING USING REGISTERS
-- NORMMAL PROGRAMMING
+- USING HAL LIBRARIES
+<br> Firstly, configuration setup needed by pining the corresponding pin and (if needed) its related features in .ioc file
+<br> Then click on Device Configuration Tool code generation icon
+<br> It directs to main.c file with inbuild set of codes
+- USING REGISTERS - BARE METAL CODING
+<br> Here, wipe out main.c file and write program directly
+
 
 ## DSP
 * EXPORT PROECT FILE
