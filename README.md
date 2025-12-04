@@ -125,12 +125,6 @@ So assuming our Vref is 5V and the resolution of the ADC is eight bit, then we e
 
 19.53mV step size.
 
-Right.
-
-So that's all there is for the short overview on ADCs and we shall see how the work programmatically.
-
-I'll see you in the next lesson.'
-
 
 
 
@@ -328,11 +322,7 @@ wanted to happen after a particular event, which is also different from time, yo
 
 the injector conversion mode.
 
-But I often don't see people use this mode as often as the others.
 
-Right.
-
-But it's good to know about this as well.
 
 ####TIMERS
 | Timer   | Bus  | Max Timer Clock | Counter Width |
