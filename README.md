@@ -324,7 +324,7 @@ the injector conversion mode.
 
 
 
-#### TIMERS
+## TIMERS
 
 Up to 11 timers overall, which includes:
 
