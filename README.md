@@ -349,6 +349,24 @@ Up to 11 timers overall, which includes:
 
 ### SYSTICK TIMER
 
+* The SysTick timer is a built-in (core) timer present in all ARM Cortex-M microcontrollers, regardless of the manufacturer (ST, NXP, TI, etc.).
+* It is part of the ARM Cortex core, not added by the chip vendor
+* It is a 24-bit down counter
+* It is typically driven by the processor clock (HCLK)
+* It can generate an interrupt when it reaches zero
+* SysTick is mainly used to create a time base.
+* Common uses:
+
+Periodic interrupts (e.g., every 1 ms)
+
+Delays and timeouts
+
+RTOS system tick (heartbeat of an RTOS scheduler)
+
+Task scheduling and timing measurements
+
+
+
 | Feature      | SysTick Timer                    | General Purpose Timers (TIMx)      |
 | ------------ | -------------------------------- | ---------------------------------- |
 | Location     | **Core peripheral (ARM)**        | **Vendor peripheral (ST/TI/NXP)**  |
@@ -361,7 +379,11 @@ Up to 11 timers overall, which includes:
 | Channels     | None                             | Multiple channels                  |
 
 
+## INTERRUPT
 
+## UART
+
+## I2C
 
 
 
