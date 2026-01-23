@@ -324,7 +324,17 @@ the injector conversion mode.
 
 
 
-####TIMERS
+#### TIMERS
+
+Up to 11 timers overall, which includes:
+
+* 6 × 16-bit general-purpose timers(TIM2, TIM3, TIM4, etc.) – for PWM, input capture, output compare
+* 2 × 32-bit timers(longer range timing)
+* Independent watchdog timer (IWDG)
+* Window watchdog timer (WWDG)
+* SysTick timer (built into ARM Cortex-M4 core)(standard, always present)
+
+  
 | Timer   | Bus  | Max Timer Clock | Counter Width |
 | ------- | ---- | --------------- | ------------- |
 | TIM1    | APB2 | 100 MHz         | 16-bit        |
@@ -335,5 +345,24 @@ the injector conversion mode.
 | TIM6    | APB1 | 50 MHz          | 16-bit        |
 | TIM7    | APB1 | 50 MHz          | 16-bit        |
 | SysTick | CPU  | 100 MHz         | 24-bit        |
+
+
+### SYSTICK TIMER
+
+| Feature      | SysTick Timer                    | General Purpose Timers (TIMx)      |
+| ------------ | -------------------------------- | ---------------------------------- |
+| Location     | **Core peripheral (ARM)**        | **Vendor peripheral (ST/TI/NXP)**  |
+| Availability | Present in **all Cortex-M MCUs** | Varies by MCU                      |
+| Bit width    | **24-bit**                       | 16-bit / 32-bit                    |
+| Counting     | Down counter                     | Up / Down / Center                 |
+| Clock source | CPU clock (usually)              | Multiple clock options             |
+| Use case     | OS tick, delays, time base       | PWM, input capture, output compare |
+| Flexibility  | Limited                          | Very high                          |
+| Channels     | None                             | Multiple channels                  |
+
+
+
+
+
 
 
