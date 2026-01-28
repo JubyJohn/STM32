@@ -48,7 +48,7 @@ You can program the STM32F411VE Discovery board using popular IDEs like:
 - Audio processing
 
 ### PROGRAMMING
-TWO METHODS:
+WE USE TWO METHODS:
 - USING HAL LIBRARIES
 <br> Firstly, configuration setup needed by pining the corresponding pin and (if needed) its related features in .ioc file
 <br> Then click on Device Configuration Tool code generation icon
