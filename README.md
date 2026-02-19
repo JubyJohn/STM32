@@ -385,7 +385,7 @@ Task scheduling and timing measurements
 <br> 1️⃣ START condition generated
 
 You set:
---------------------------
+
 | I2C1->CR1 |= CR1_START;|
 --------------------------
 
