@@ -381,6 +381,58 @@ Task scheduling and timing measurements
 
 ## INTERRUPT
 
+(3) I2C
+1️⃣ START condition generated
+
+You set:
+
+I2C1->CR1 |= CR1_START;
+
+
+Hardware sends START → sets SB flag
+➡ Interrupt fires
+
+ISR handles:
+
+if(SR1 & SB) → send slave address
+
+2️⃣ Address transmitted + ACK received
+
+Hardware sends address
+OLED sends ACK
+Peripheral sets ADDR flag
+➡ Interrupt fires
+
+ISR handles:
+
+if(SR1 & ADDR) → clear flag + send memory address
+
+
+👉 This is the moment ACK is detected
+BUT interrupt is triggered by ADDR flag, not ACK itself.
+
+3️⃣ Data byte transmitted
+
+You write a byte to DR
+Hardware shifts it out
+OLED sends ACK
+Peripheral sets TXE flag
+
+➡ Interrupt fires
+
+ISR handles:
+
+if(SR1 & TXE) → send next byte
+
+
+👉 Again ACK already happened → flag set → interrupt.
+
+4️⃣ Last byte finished
+
+Peripheral sets BTF flag
+➡ Interrupt fires
+You generate STOP.
+
 ## UART
 
 ## I2C
