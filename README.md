@@ -382,12 +382,12 @@ Task scheduling and timing measurements
 ## INTERRUPT
 
 (3) I2C
-1️⃣ START condition generated
+<br> 1️⃣ START condition generated
 
 You set:
-
-I2C1->CR1 |= CR1_START;
-
+--------------------------
+| I2C1->CR1 |= CR1_START;|
+--------------------------
 
 Hardware sends START → sets SB flag
 ➡ Interrupt fires
